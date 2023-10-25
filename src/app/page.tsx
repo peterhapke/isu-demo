@@ -4,7 +4,7 @@ import { Button , Box} from "@mui/material";
 import { useState } from "react";
 
 export default function Home() {
-  const [showMsg, setShowMsg] = useState(false);
+  const [showMsg, setShowMsg] = useState(true);
   const [cats, setCats] = useState<string[]>([]);
 
 
@@ -23,11 +23,10 @@ export default function Home() {
     <main>
       <h1>Hello WORLD</h1>
       <Box>
-              <Button onClick={showMoreCats} variant="contained" >press me</Button>  
-
+              {showMsg && <p>Welcome to WEBDEV Club</p>}
+              <Button onClick={showMoreCats} variant="contained" >press me for cats</Button>  
       </Box>
-      {showMsg && <p>Welcome to WEBDEV Club</p>}
-      {cats.map(cat => (<img src={cat}/>))}
+      {cats.map((cat, i) => (<img key={i} src={cat}/>))}
 
 
     </main>
